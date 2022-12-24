@@ -1,39 +1,33 @@
 import RegexFlag from './regex-flags.js';
 import Regex from './regex.js';
+import RegexCharacter from "./regex-character.js";
 
 
 // This is used to construct a human-readable regex
+// TODO: Change some of these to be more specific. Only allow you to set quantity on elements
 export default class RegexBuilder {
     constructor() {
         this._regex = '';
         this._flags = new RegexFlag();
     }
 
+    _appendToRegex(text) {
+        this._regex += text;
+        return this;
+    }
+
     text(text) {
         return this._appendToRegex(text);
     }
 
-    anyCharacter() {
-        return this._appendToRegex('.');
-    }
-
-    backslashCharacter() {
-        return this._appendToRegex('\\');
-    }
-
-    whitespaceCharacter() {
-        this.backslashCharacter();
-        return this._appendToRegex('s');
-    }
-
     optionalWhitespace() {
-        this.whitespaceCharacter();
+        this._appendToRegex(RegexCharacter.WHITESPACE.character());
         return this.repeatZeroOrMoreTimes();
     }
 
     mandatoryWhitespace() {
         this.whitespaceCharacter();
-        return this.repeatOneOrMoreTimes();
+        return this.atLeastOnce();
     }
 
     matchQuote() {
@@ -48,14 +42,6 @@ export default class RegexBuilder {
         return this._appendToRegex(')')
     }
 
-    repeatZeroOrMoreTimes() {
-        return this._appendToRegex('*');
-    }
-
-    repeatOneOrMoreTimes() {
-        return this._appendToRegex('+');
-    }
-
     characterInGroup(characterGroup) {
         return this._appendToRegex(`[${characterGroup}]`);
     }
@@ -66,11 +52,6 @@ export default class RegexBuilder {
 
     addFlag(regexFlag) {
         this._flags.addFlag(regexFlag);
-        return this;
-    }
-
-    _appendToRegex(text) {
-        this._regex += text;
         return this;
     }
 
