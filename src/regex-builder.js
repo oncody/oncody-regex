@@ -2,7 +2,7 @@ import RegexFlags from './regex-flags.js';
 import Regex from './regex.js';
 import RegexCharacter from "./regex-character.js";
 import RegexFrequency from "./regex-frequency.js";
-
+import RegexText from "./regex-text.js";
 
 // This is used to construct a human-readable regex
 // TODO: Change some of these to be more specific. Only allow you to set quantity on elements
@@ -17,36 +17,36 @@ export default class RegexBuilder {
         return this;
     }
 
-    optionalWhitespace() {
-        return '' + RegexCharacter.WHITESPACE + RegexFrequency.ANY_NUMBER_OF_TIMES;
+    anyNumberOfTimes() {
+
     }
 
-    mandatoryWhitespace() {
-        return '' + RegexCharacter.WHITESPACE + RegexFrequency.AT_LEAST_ONCE;
+    atLeastOnce() {
+
     }
+
+    neverOrOnce() {
+
+    }
+
+
+
 
     quoteCharacter() {
-        return this.characterIn('\'"');
+        let text = new RegexText('\'"');
+        return text.matchOneCharacter();
     }
 
     quotedText(text) {
         return '' + this.quoteCharacter() + text + this.quoteCharacter();
     }
 
-    captureGroup(text) {
-        return `(${text})`;
+    optionalWhitespace() {
+        return '' + RegexCharacter.WHITESPACE + RegexFrequency.ANY_NUMBER_OF_TIMES;
     }
 
-    nonCaptureGroup(text) {
-        return `(?:${text})`;
-    }
-
-    characterIn(characterGroup) {
-        return `[${characterGroup}]`;
-    }
-
-    characterNotIn(characterGroup) {
-        return `[^${characterGroup}]`;
+    mandatoryWhitespace() {
+        return '' + RegexCharacter.WHITESPACE + RegexFrequency.AT_LEAST_ONCE;
     }
 
     addFlag(regexFlag) {
