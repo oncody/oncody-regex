@@ -1,6 +1,7 @@
-import RegexFlag from './regex-flags.js';
+import RegexFlags from './regex-flags.js';
 import Regex from './regex.js';
 import RegexCharacter from "./regex-character.js";
+import RegexFrequency from "./regex-frequency.js";
 
 
 // This is used to construct a human-readable regex
@@ -8,46 +9,44 @@ import RegexCharacter from "./regex-character.js";
 export default class RegexBuilder {
     constructor() {
         this._regex = '';
-        this._flags = new RegexFlag();
+        this._flags = new RegexFlags();
     }
 
-    _appendToRegex(text) {
+    add(text) {
         this._regex += text;
         return this;
     }
 
-    text(text) {
-        return this._appendToRegex(text);
-    }
-
     optionalWhitespace() {
-        this._appendToRegex(RegexCharacter.WHITESPACE.character());
-        return this.repeatZeroOrMoreTimes();
+        return '' + RegexCharacter.WHITESPACE + RegexFrequency.ANY_NUMBER_OF_TIMES;
     }
 
     mandatoryWhitespace() {
-        this.whitespaceCharacter();
-        return this.atLeastOnce();
+        return '' + RegexCharacter.WHITESPACE + RegexFrequency.AT_LEAST_ONCE;
     }
 
-    matchQuote() {
-        return this.characterInGroup('\'"');
+    quoteCharacter() {
+        return this.characterIn('\'"');
     }
 
-    captureGroupStart() {
-        return this._appendToRegex('(')
+    quotedText(text) {
+        return '' + this.quoteCharacter() + text + this.quoteCharacter();
     }
 
-    captureGroupEnd() {
-        return this._appendToRegex(')')
+    captureGroup(text) {
+        return `(${text})`;
     }
 
-    characterInGroup(characterGroup) {
-        return this._appendToRegex(`[${characterGroup}]`);
+    nonCaptureGroup(text) {
+        return `(?:${text})`;
     }
 
-    characterNotInString(characterGroup) {
-        return this._appendToRegex(`[^${characterGroup}]`);
+    characterIn(characterGroup) {
+        return `[${characterGroup}]`;
+    }
+
+    characterNotIn(characterGroup) {
+        return `[^${characterGroup}]`;
     }
 
     addFlag(regexFlag) {
@@ -57,9 +56,6 @@ export default class RegexBuilder {
 
     // This returns a custom regex class
     build() {
-        let flags = this._flags.toString();
-        // console.log(this.regex);
-        let regex = new RegExp(this._regex, flags);
-        return new Regex(regex);
+        return new Regex(this._regex, this._flags);
     }
 }

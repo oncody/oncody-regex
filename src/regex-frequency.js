@@ -1,28 +1,15 @@
 
 export default class RegexFrequency {
-    constructor() {
-        this._regex = '';
+    static ANY_NUMBER_OF_TIMES = new RegexFrequency('*');
+    static AT_LEAST_ONCE = new RegexFrequency('+');
+    static NEVER_OR_ONCE = new RegexFrequency('?');
+
+    constructor(char) {
+        this._char = char;
     }
 
-    _appendToRegex(text) {
-        this._regex += text;
-        return this;
-    }
-
-    text(text) {
-        return this._appendToRegex(text);
-    }
-
-    anyNumberOfTimes() {
-        return this._appendToRegex('*');
-    }
-
-    atLeastOnce() {
-        return this._appendToRegex('+');
-    }
-
-    neverOrOnce() {
-        return this._appendToRegex('?');
+    toString() {
+        return this._char;
     }
 }
 
