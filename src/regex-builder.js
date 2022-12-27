@@ -13,11 +13,6 @@ export default class RegexBuilder {
         return this;
     }
 
-    matchAndCapture(text) {
-        this._text += `(${text})`;
-        return this;
-    }
-
     matchSingleCharacterInside(text) {
         this._text += `[${text}]`;
         return this;
@@ -25,6 +20,16 @@ export default class RegexBuilder {
 
     matchSingleCharacterOutside(text) {
         this._text += `[^${text}]`;
+        return this;
+    }
+
+    startCapture() {
+        this._text += '(';
+        return this;
+    }
+
+    endCapture() {
+        this._text += ')';
         return this;
     }
 
