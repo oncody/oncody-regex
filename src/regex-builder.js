@@ -33,18 +33,33 @@ export default class RegexBuilder {
         return this;
     }
 
-    anyNumberOfTimes() {
+    anyNumberOfTimesGreedy() {
         this._text += '*';
         return this;
     }
 
-    atLeastOnce() {
+    anyNumberOfTimesLazy() {
+        this._text += '*?';
+        return this;
+    }
+
+    atLeastOnceGreedy() {
         this._text += '+';
         return this;
     }
 
-    neverOrOnce() {
+    atLeastOnceLazy() {
+        this._text += '+?';
+        return this;
+    }
+
+    neverOrOnceGreedy() {
         this._text += '?';
+        return this;
+    }
+
+    neverOrOnceLazy() {
+        this._text += '??';
         return this;
     }
 
