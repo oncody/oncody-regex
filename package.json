@@ -1,6 +1,6 @@
 {
   "name": "oncody-regex",
-  "version": "1.0.3",
+  "version": "1.0.10",
   "description": "oncody npm regex",
   "main": "index.js",
   "type": "module",
