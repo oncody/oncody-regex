@@ -1,8 +1,8 @@
 import RegexFlags from './regex-flags.js';
 import Regex from './regex.js';
 import RegexCharacter from "./regex-character.js";
-import RegexFrequency from "./regex-frequency.js";
-import RegexText from "./regex-text.js";
+import RegexQuantifier from "./regex/quantifier/regex-quantifier.js";
+import RegexGroup from "./regex/group/regex-group.js";
 
 // This is used to construct a human-readable regex
 // TODO: Change some of these to be more specific. Only allow you to set quantity on elements
@@ -33,7 +33,7 @@ export default class RegexBuilder {
 
 
     quoteCharacter() {
-        let text = new RegexText('\'"');
+        let text = new RegexGroup('\'"');
         return text.matchOneCharacter();
     }
 
@@ -42,11 +42,11 @@ export default class RegexBuilder {
     }
 
     optionalWhitespace() {
-        return '' + RegexCharacter.WHITESPACE + RegexFrequency.ANY_NUMBER_OF_TIMES;
+        return '' + RegexCharacter.WHITESPACE + RegexQuantifier.ANY_NUMBER_OF_TIMES;
     }
 
     mandatoryWhitespace() {
-        return '' + RegexCharacter.WHITESPACE + RegexFrequency.AT_LEAST_ONCE;
+        return '' + RegexCharacter.WHITESPACE + RegexQuantifier.AT_LEAST_ONCE;
     }
 
     addFlag(regexFlag) {

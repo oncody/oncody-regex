@@ -1,4 +1,4 @@
-export default class RegexText {
+export default class RegexGroup {
     constructor(text) {
         this._text = text;
     }
