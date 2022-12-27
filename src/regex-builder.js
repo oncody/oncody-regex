@@ -9,12 +9,12 @@ export default class RegexBuilder {
     }
 
     match(text) {
-        this._text += `(?:${text})`;
+        this._text += (text.length > 1) ? `(?:${text})` : text;
         return this;
     }
 
     matchSingleCharacterInside(text) {
-        this._text += `[${text}]`;
+        this._text += (text.length > 1) ? `[${text}]` : text;
         return this;
     }
 
