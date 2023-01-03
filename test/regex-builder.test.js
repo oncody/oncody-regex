@@ -29,3 +29,10 @@ test('Calling stopCapturing twice throws too many capture groups error', () => {
         regex.stopCapturing();
     }).toThrow(TooManyCaptureGroupsError);
 });
+
+test('Regex Builder Match Happy path', () => {
+    let text = "abcdefgh";
+    let pattern = "cde";
+    let regex = new RegexBuilder().match(pattern).build();
+    expect(regex.firstMatch(text).text()).toBe(pattern);
+});
