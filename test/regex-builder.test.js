@@ -62,3 +62,9 @@ test('Any number of times greedy happy path', () => {
     let regex = new RegexBuilder().match("'").match(RegexCharacter.WILDCARD).anyNumberOfTimesGreedy().match("'").build();
     expect(regex.firstMatch(text).text()).toBe(text);
 });
+
+test('Any number of times lazy happy path', () => {
+    let text = "'abc'def'ghi'jkl'";
+    let regex = new RegexBuilder().match("'").match(RegexCharacter.WILDCARD).anyNumberOfTimesLazy().match("'").build();
+    expect(regex.firstMatch(text).text()).toBe("'abc'");
+});
