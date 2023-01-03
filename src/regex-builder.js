@@ -27,7 +27,7 @@ export default class RegexBuilder {
         return this;
     }
 
-    startCapture() {
+    startCapturing() {
         if(this._captureGroupStarted) {
             throw new TooManyCaptureGroupsError();
         }
@@ -37,7 +37,7 @@ export default class RegexBuilder {
         return this;
     }
 
-    endCapture() {
+    stopCapturing() {
         if(!this._captureGroupStarted) {
             throw new CaptureGroupNotStartedError();
         }
