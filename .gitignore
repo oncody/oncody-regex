@@ -1,3 +1,7 @@
-.idea
 node_modules
 package-lock.json
+.DS_Store
+.idea/.gitignore
+.idea/modules.xml
+.idea/oncody-regex.iml
+.idea/vcs.xml
