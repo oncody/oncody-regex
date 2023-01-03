@@ -15,9 +15,8 @@ export default class Regex {
         let match = regex.exec(text);
         if (match) {
             // if it has a capture group, use that
-            let substring = (match.length > 1) ?  match[1] : match[0];
-            let position = match.index;
-            return new Match(substring, position);
+            let matchedText = (match.length > 1) ?  match[1] : match[0];
+            return new Match(matchedText, match.index);
         }
 
         return null;
@@ -30,7 +29,9 @@ export default class Regex {
 
         let matches = [];
         for(let match of text.matchAll(regex)) {
-            matches.push(new Match(match[0], match.index));
+            // if it has a capture group, use that
+            let matchedText = (match.length > 1) ?  match[1] : match[0];
+            matches.push(new Match(matchedText, match.index));
         }
 
         return matches;

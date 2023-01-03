@@ -105,7 +105,7 @@ test('Never or once greedy happy path', () => {
     expect(regex.firstMatch(text).text()).toBe(text);
 });
 
-test('Multiple matches works', () => {
+test('Multiple matches happy path', () => {
     let text = "zabzdezfgzhi";
     let regex = new RegexBuilder().match("z").match(RegexCharacter.WILDCARD).build();
     let matches = regex.allMatches(text);
@@ -114,4 +114,15 @@ test('Multiple matches works', () => {
     expect(matches[1].text()).toBe('zd');
     expect(matches[2].text()).toBe('zf');
     expect(matches[3].text()).toBe('zh');
+});
+
+test('Multiple matches capture groups happy path', () => {
+    let text = "zabzdezfgzhi";
+    let regex = new RegexBuilder().match("z").startCapturing().match(RegexCharacter.WILDCARD).stopCapturing().build();
+    let matches = regex.allMatches(text);
+    expect(matches.length).toBe(4);
+    expect(matches[0].text()).toBe('a');
+    expect(matches[1].text()).toBe('d');
+    expect(matches[2].text()).toBe('f');
+    expect(matches[3].text()).toBe('h');
 });
