@@ -8,6 +8,7 @@ export default class Regex {
     }
 
     firstMatch(text) {
+        this._flags.remove(RegexFlag.GLOBAL);
         let flags = this._flags.toString();
         let regex = new RegExp(this._regex, flags);
 
@@ -23,7 +24,7 @@ export default class Regex {
     }
 
     allMatches(text) {
-        this._flags.addFlag(RegexFlag.GLOBAL);
+        this._flags.add(RegexFlag.GLOBAL);
         let flags = this._flags.toString();
         let regex = new RegExp(this._regex, flags);
 

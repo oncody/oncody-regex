@@ -1,11 +1,15 @@
 import RegexFlags from "./regex-flags.js";
 import Regex from "./regex.js";
+import TooManyCaptureGroupsError from "./too-many-capture-groups-error.js";
+import CaptureGroupNotStartedError from "./capture-group-not-started-error.js";
 
 // This is used to construct a human-readable regex
 export default class RegexBuilder {
-    constructor(text, flags) {
-        this._text = text ? text : '';
-        this._flags = flags ? flags : new RegexFlags();
+    constructor() {
+        this._text = '';
+        this._flags = new RegexFlags();
+        this._captureGroupStarted = false;
+        this._captureGroupEnded = false;
     }
 
     match(text) {
@@ -24,12 +28,26 @@ export default class RegexBuilder {
     }
 
     startCapture() {
+        if(this._captureGroupStarted) {
+            throw new TooManyCaptureGroupsError();
+        }
+
         this._text += '(';
+        this._captureGroupStarted = true;
         return this;
     }
 
     endCapture() {
+        if(!this._captureGroupStarted) {
+            throw new CaptureGroupNotStartedError();
+        }
+
+        if(this._captureGroupEnded) {
+            throw new TooManyCaptureGroupsError();
+        }
+
         this._text += ')';
+        this._captureGroupEnded = true;
         return this;
     }
 
@@ -64,7 +82,7 @@ export default class RegexBuilder {
     }
 
     addFlag(flag) {
-        this._flags.addFlag(flag);
+        this._flags.add(flag);
         return this;
     }
 

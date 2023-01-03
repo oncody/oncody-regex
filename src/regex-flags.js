@@ -2,14 +2,18 @@
 
 export default class RegexFlags {
     constructor() {
-        this._flagSet = new Set();
+        this._flags = new Set();
     }
 
-    addFlag(regexFlag) {
-        this._flagSet.add(regexFlag);
+    add(flag) {
+        this._flags.add(flag);
+    }
+
+    remove(flag) {
+        this._flags.delete(flag);
     }
 
     toString() {
-        return Array.from(this._flagSet).map(flag => flag.toString()).join('');
+        return Array.from(this._flags).map(flag => flag.toString()).join('');
     }
 }
