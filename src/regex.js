@@ -29,11 +29,8 @@ export default class Regex {
         let regex = new RegExp(this._regex, flags);
 
         let matches = [];
-        let match;
-        while ((match = regex.exec(text)) !== null) {
-            let substring = match[0];
-            let position = match.index;
-            matches.push(new Match(substring, position));
+        for(let match of text.matchAll(regex)) {
+            matches.push(new Match(match[0], match.index));
         }
 
         return matches;

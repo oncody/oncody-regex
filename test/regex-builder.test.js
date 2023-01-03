@@ -104,3 +104,14 @@ test('Never or once greedy happy path', () => {
     let regex = new RegexBuilder().match("a").match(RegexCharacter.WILDCARD).neverOrOnceLazy().match("c").build();
     expect(regex.firstMatch(text).text()).toBe(text);
 });
+
+test('Multiple matches works', () => {
+    let text = "zabzdezfgzhi";
+    let regex = new RegexBuilder().match("z").match(RegexCharacter.WILDCARD).build();
+    let matches = regex.allMatches(text);
+    expect(matches.length).toBe(4);
+    expect(matches[0].text()).toBe('za');
+    expect(matches[1].text()).toBe('zd');
+    expect(matches[2].text()).toBe('zf');
+    expect(matches[3].text()).toBe('zh');
+});
