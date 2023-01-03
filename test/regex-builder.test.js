@@ -21,3 +21,11 @@ test('Calling stopCapturing before starting capture throws capture group not sta
         regex.stopCapturing();
     }).toThrow(CaptureGroupNotStartedError);
 });
+
+test('Calling stopCapturing twice throws too many capture groups error', () => {
+    let regex = new RegexBuilder().startCapturing().stopCapturing();
+
+    expect(() => {
+        regex.stopCapturing();
+    }).toThrow(TooManyCaptureGroupsError);
+});
