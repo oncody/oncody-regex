@@ -43,3 +43,9 @@ test('Regex Builder Capture Group Happy path', () => {
     let regex = new RegexBuilder().match('b').startCapturing().match(pattern).stopCapturing().match('f').build();
     expect(regex.firstMatch(text).text()).toBe(pattern);
 });
+
+test('Match single character inside happy path', () => {
+    let text = "abc";
+    let regex = new RegexBuilder().matchSingleCharacterInside('cde').build();
+    expect(regex.firstMatch(text).text()).toBe('c');
+});
