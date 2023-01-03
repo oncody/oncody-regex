@@ -1,6 +1,7 @@
 import RegexBuilder from "../src/regex-builder.js";
 import TooManyCaptureGroupsError from "../src/too-many-capture-groups-error.js";
 import CaptureGroupNotStartedError from "../src/capture-group-not-started-error.js";
+import RegexCharacter from "../src/regex-character.js";
 
 test('basic test', () => {
     expect(1+2).toBe(3);
@@ -54,4 +55,10 @@ test('Match single character outside happy path', () => {
     let text = "abc";
     let regex = new RegexBuilder().matchSingleCharacterOutside('ab').build();
     expect(regex.firstMatch(text).text()).toBe('c');
+});
+
+test('Any number of times greedy happy path', () => {
+    let text = "'abc'def'ghi'jkl'";
+    let regex = new RegexBuilder().match("'").match(RegexCharacter.WILDCARD).anyNumberOfTimesGreedy().match("'").build();
+    expect(regex.firstMatch(text).text()).toBe(text);
 });

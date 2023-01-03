@@ -5,3 +5,4 @@ package-lock.json
 .idea/modules.xml
 .idea/oncody-regex.iml
 .idea/vcs.xml
+coverage
