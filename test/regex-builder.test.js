@@ -49,3 +49,9 @@ test('Match single character inside happy path', () => {
     let regex = new RegexBuilder().matchSingleCharacterInside('cde').build();
     expect(regex.firstMatch(text).text()).toBe('c');
 });
+
+test('Match single character outside happy path', () => {
+    let text = "abc";
+    let regex = new RegexBuilder().matchSingleCharacterOutside('ab').build();
+    expect(regex.firstMatch(text).text()).toBe('c');
+});
