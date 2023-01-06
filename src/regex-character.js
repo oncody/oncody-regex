@@ -8,10 +8,17 @@ export default class RegexCharacter {
     static LETTER = new RegexCharacter("\\w");
     static NON_LETTER = new RegexCharacter("\\W");
 
+    /**
+     * @param {string} char
+     * @returns {RegexCharacter}
+     */
     constructor(char) {
         this._char = char;
     }
 
+    /**
+     * @returns {string}
+     */
     toString() {
         return this._char;
     }

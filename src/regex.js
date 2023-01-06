@@ -2,11 +2,21 @@ import Match from './match.js';
 import RegexFlag from "./regex-flag.js";
 
 export default class Regex {
+
+    /**
+     * @param {string} regex
+     * @param {RegexFlags} flags
+     * @returns {Regex}
+     */
     constructor(regex, flags) {
         this._regex = regex;
         this._flags = flags;
     }
 
+    /**
+     * @param {string} text
+     * @returns {Match|null}
+     */
     firstMatch(text) {
         this._flags.remove(RegexFlag.GLOBAL);
         let flags = this._flags.toString();
@@ -22,6 +32,10 @@ export default class Regex {
         return null;
     }
 
+    /**
+     * @param {string} text
+     * @returns {[Match]}
+     */
     allMatches(text) {
         this._flags.add(RegexFlag.GLOBAL);
         let flags = this._flags.toString();

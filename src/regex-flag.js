@@ -9,10 +9,17 @@ export default class RegexFlag {
     static SINGLE_LINE = new RegexFlag('s');
     static INDICES = new RegexFlag('d');
 
+    /**
+     * @param {string} character
+     * @returns {RegexFlag}
+     */
     constructor(character) {
         this._character = character;
     }
 
+    /**
+     * @returns {string}
+     */
     toString() {
         return this._character;
     }
