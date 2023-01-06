@@ -34,7 +34,7 @@ export default class Regex {
 
     /**
      * @param {string} text
-     * @returns {[Match]}
+     * @returns {Match[]}
      */
     allMatches(text) {
         this._flags.add(RegexFlag.GLOBAL);
