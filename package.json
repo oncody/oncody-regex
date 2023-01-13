@@ -1,5 +1,5 @@
 {
-  "name": "oncody-regex",
+  "name": "@oncody/regex",
   "version": "1.0.17",
   "description": "oncody npm regex",
   "main": "index.js",
@@ -10,6 +10,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oncody/oncody-regex.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [],
   "author": "Cody Smith",
