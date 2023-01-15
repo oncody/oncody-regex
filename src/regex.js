@@ -1,8 +1,7 @@
-import Match from './match.js';
-import RegexFlag from "./regex-flag.js";
+import {Match} from './match.js';
+import {RegexFlag} from "./flag/regex-flag.js";
 
-export default class Regex {
-
+class Regex {
     /**
      * @param {string} regex
      * @param {RegexFlags} flags
@@ -51,3 +50,5 @@ export default class Regex {
         return matches;
     }
 }
+
+export {Regex}

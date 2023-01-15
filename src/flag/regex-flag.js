@@ -1,6 +1,6 @@
 // These are the different regex flags you can set
 
-export default class RegexFlag {
+class RegexFlag {
     static GLOBAL = new RegexFlag('g');
     static MULTILINE = new RegexFlag('m');
     static CASE_INSENSITIVE = new RegexFlag('i');
@@ -24,3 +24,5 @@ export default class RegexFlag {
         return this._character;
     }
 }
+
+export {RegexFlag}

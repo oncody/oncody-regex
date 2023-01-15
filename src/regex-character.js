@@ -1,4 +1,4 @@
-export default class RegexCharacter {
+class RegexCharacter {
     static WILDCARD = new RegexCharacter(".");
     static BACKSLASH = new RegexCharacter("\\");
     static WHITESPACE = new RegexCharacter("\\s");
@@ -23,3 +23,5 @@ export default class RegexCharacter {
         return this._char;
     }
 }
+
+export {RegexCharacter}

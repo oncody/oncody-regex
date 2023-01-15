@@ -1,4 +1,4 @@
-export default class CaptureGroupNotStartedError extends Error {
+class CaptureGroupNotStartedError extends Error {
 
     /**
      * @param {string} message
@@ -9,3 +9,5 @@ export default class CaptureGroupNotStartedError extends Error {
         this.name = 'CaptureGroupNotStartedError';
     }
 }
+
+export {CaptureGroupNotStartedError}

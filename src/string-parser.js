@@ -1,6 +1,6 @@
-import Match from './match.js';
+import {Match} from './match.js';
 
-export default class StringParser {
+class StringParser {
 
     /**
      * @param {string} text
@@ -41,3 +41,5 @@ export default class StringParser {
         return new Match(string, startMatch.startPosition());
     }
 }
+
+export {StringParser}

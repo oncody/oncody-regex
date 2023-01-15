@@ -1,4 +1,4 @@
-export default class TooManyCaptureGroupsError extends Error {
+class TooManyCaptureGroupsError extends Error {
 
     /**
      * @param {string} message
@@ -9,3 +9,5 @@ export default class TooManyCaptureGroupsError extends Error {
         this.name = 'TooManyCaptureGroupsError';
     }
 }
+
+export {TooManyCaptureGroupsError}

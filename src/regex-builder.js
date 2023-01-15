@@ -1,10 +1,10 @@
-import RegexFlags from "./regex-flags.js";
-import Regex from "./regex.js";
-import TooManyCaptureGroupsError from "./too-many-capture-groups-error.js";
-import CaptureGroupNotStartedError from "./capture-group-not-started-error.js";
+import {RegexFlags} from "./flag/regex-flags.js";
+import {Regex} from "./regex.js";
+import {TooManyCaptureGroupsError} from "./error/too-many-capture-groups-error.js";
+import {CaptureGroupNotStartedError} from "./error/capture-group-not-started-error.js";
 
 // This is used to construct a human-readable regex
-export default class RegexBuilder {
+class RegexBuilder {
 
     /**
      * @returns {RegexBuilder}
@@ -138,3 +138,5 @@ export default class RegexBuilder {
         return new Regex(this._text, this._flags);
     }
 }
+
+export {RegexBuilder}

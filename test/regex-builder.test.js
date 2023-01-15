@@ -1,7 +1,7 @@
-import RegexBuilder from "../src/regex-builder.js";
-import TooManyCaptureGroupsError from "../src/too-many-capture-groups-error.js";
-import CaptureGroupNotStartedError from "../src/capture-group-not-started-error.js";
-import RegexCharacter from "../src/regex-character.js";
+import {RegexBuilder} from "../src/regex-builder.js";
+import {TooManyCaptureGroupsError} from "../src/error/too-many-capture-groups-error.js";
+import {CaptureGroupNotStartedError} from "../src/error/capture-group-not-started-error.js";
+import {RegexCharacter} from "../src/regex-character.js";
 
 test('basic test', () => {
     expect(1+2).toBe(3);

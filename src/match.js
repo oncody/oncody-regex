@@ -1,6 +1,7 @@
-// Represent a matched substring
-
-export default class Match {
+/**
+ * Represent a matched substring
+  */
+class Match {
 
     /**
      * @param {string} text
@@ -34,3 +35,5 @@ export default class Match {
         return this._endPosition;
     }
 }
+
+export {Match}
