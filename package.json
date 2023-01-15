@@ -1,6 +1,6 @@
 {
   "name": "@oncody/regex",
-  "version": "1.0.20",
+  "version": "1.0.1",
   "description": "oncody npm regex",
   "type": "module",
   "scripts": {
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oncody/oncody-regex.git"
+    "url": "git+https://github.com/oncody/regex.git"
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [],
   "author": "Cody Smith",
   "license": "MIT",
-  "homepage": "https://github.com/oncody/oncody-regex#readme",
+  "homepage": "https://github.com/oncody/regex#readme",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "jest": "^29.3.1"
