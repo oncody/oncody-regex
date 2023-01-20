@@ -4,7 +4,8 @@
   "description": "oncody npm regex",
   "type": "module",
   "scripts": {
-    "test": "jest"
+    "clean": "rm -rf node_modules",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -12,6 +13,9 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "@oncody/config": "1.0.6"
   },
   "keywords": [],
   "author": "Cody Smith",
